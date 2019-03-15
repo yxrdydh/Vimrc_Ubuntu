@@ -94,6 +94,7 @@ Plug 'rhysd/vim-grammarous'
 "----------------------------------
 " colorschemes and themes
 "----------------------------------
+Plug 'powerline/powerline-fonts'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'romainl/Apprentice'
 Plug 'ayu-theme/ayu-vim'
@@ -261,7 +262,7 @@ autocmd filetype python,xml set listchars=tab:>.,trail:.,extends:#,nbsp:.
 if has("gui_running")
    " set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
     "set guifont=Inconsolata-g\ for\ Powerline\ 11
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
     "set guifont=Terminus\ for\ Powerline\ 12
     set guioptions-=T "remove toolbars
     set guioptions-=m "remove menu bars
@@ -760,11 +761,7 @@ function! SetTexOptions()
     nmap k gk
     set background=light 
     colorscheme hybrid_material
-    
-    if has('gui_running')
-    else
-    :AirlineTheme monochrome
-    endif
+    :AirlineTheme papercolor
 endfunction
 
 autocmd Filetype tex call SetTexOptions()
@@ -822,8 +819,6 @@ let g:tex_conceal=''
 " AIRLINE
 " ------------------------------------------------------------
 
-if has('gui_running')
-else
 " enable powerline fonts
 let g:airline_powerline_fonts = 1
 " enable tabline
@@ -834,6 +829,8 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#fnamemod=':t'
 " show buffer number in tabline
 " let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#vimtex#left = ""
+let g:airline#extensions#vimtex#right = ""
 
 "  airline symbols dictionary
 if !exists('g:airline_symbols')
@@ -867,7 +864,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
-endif
 "-------------------------------------------------------------
 " NERDTree
 " ------------------------------------------------------------
@@ -924,11 +920,11 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 "let g:ycm_filetype_blacklist = {
-"                            \ 'tagbar' : 1,
-"                            \ 'nerdtree' : 1,
-"                            \ 'tex' : 1,
-"                            \ 'vim' : 1,
-"                            \}
+                            \ 'tagbar' : 1,
+                            \ 'nerdtree' : 1,
+                            \ 'tex' : 1,
+                            \ 'vim' : 1,
+                            \}
 
 " resolve <TAB> <S-TAB> conflict with ultisnips
 let g:ycm_key_list_select_completion = ['<Down>']
